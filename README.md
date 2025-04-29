@@ -115,6 +115,28 @@ npm install
 npm run dev
 ```
 
+### 🚨 注意事項
+
+コンテナ内の `node_modules` を、ホスト側に直接マウントしない設計にしています。
+そのため、ホスト側に `frontend/node_modules` が存在しない場合、下記のコマンドで取得してください。
+
+（※必ず `docker-compose.yml`があるディレクトリで実行してください）
+
+```bash
+docker cp taskhub-frontend-1:/app/node_modules frontend
+```
+
+これにより、ホスト側でも依存関係を参照可能になります。
+
+
+### 📚 解説
+
+| 理由 | 説明 |
+|:--|:--|
+| なぜマウントしない？ | node_modulesをホストマウントするとOS違い(Mac/Windows/コンテナ内Linux)で依存が壊れるリスクがある |
+| どうしてdocker cp？ | 一旦コンテナ内でnpm installさせた後、完成したnode_modulesだけ安全にコピーするため |
+
+
 ## テスト
 
 ### バックエンド

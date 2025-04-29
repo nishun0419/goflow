@@ -11,9 +11,6 @@ RUN go mod download
 # アプリケーションのソースコードをコピー
 COPY . .
 
-# アプリケーションをビルド
-RUN go build -o main ./cmd/main.go
-
 # エントリポイントスクリプトをコピーして実行権限を付与
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
