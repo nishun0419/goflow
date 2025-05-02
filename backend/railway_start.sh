@@ -1,4 +1,3 @@
-# backend/start.sh
 #!/bin/sh
 set -e
 
