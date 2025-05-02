@@ -20,7 +20,7 @@ COPY backend/railway_start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/railway_start.sh
 
 # エントリポイントを設定
-ENTRYPOINT ["railway_start.sh"]
+ENTRYPOINT ["/usr/local/bin/railway_start.sh"]
 
 # ポートを公開
 EXPOSE 8080
